@@ -22,7 +22,7 @@ public class Library {
                     + " which has " + book.getCountOfPages() + " pages");
         }
         for (Book book: books) {
-            if (book.getName().equals("Clean code")) {
+            if ("Clean code".equals(book.getName())) {
                 System.out.println("The book name is: " + book.getName()
                         + " which has " + book.getCountOfPages() + " pages");
             }
