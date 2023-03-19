@@ -38,8 +38,7 @@ public class Tracker {
                 i++;
             }
         }
-        rsl = Arrays.copyOf(rsl, i);
-        return  rsl;
+        return  Arrays.copyOf(rsl, i);
     }
 
     public Item[] findAll() {
@@ -51,8 +50,7 @@ public class Tracker {
                 i++;
             }
         }
-        rsl = Arrays.copyOf(rsl, i);
-        return rsl;
+        return Arrays.copyOf(rsl, i);
     }
 
     public boolean replace(int id, Item item) {
