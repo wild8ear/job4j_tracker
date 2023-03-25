@@ -45,5 +45,6 @@ public class StartUITest {
                 new DeleteAction(),
                 new ExitAction()
         };
+        assertThat(tracker.findById(item.getId())).isNull();
     }
 }
