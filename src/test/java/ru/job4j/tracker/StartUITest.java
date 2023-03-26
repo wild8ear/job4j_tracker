@@ -36,15 +36,14 @@ public class StartUITest {
 
     @Test
     public void whenDeleteItem() {
-        Output output = new ConsoleOutput();
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("Delete item"));
         Input in = new StubInput(
                 new String[] {"0", "1"}
         );
         UserAction[] actions = {
-                new DeleteAction(output),
-                new ExitAction(output)
+                new DeleteAction(),
+                new ExitAction()
         };
         assertThat(tracker.findById(item.getId())).isNull();
     }
@@ -58,9 +57,9 @@ public class StartUITest {
         );
         Tracker tracker = new Tracker();
         UserAction[] actions = {
-                new ExitAction(output)
+                new ExitAction()
         };
-        new StartUI(out).init(in, tracker, actions);
+        new StartUI().init(in, tracker, actions);
         assertThat(out.toString()).isEqualTo(
                 "Menu." + System.lineSeparator()
                         + "0. Exit" + System.lineSeparator()
