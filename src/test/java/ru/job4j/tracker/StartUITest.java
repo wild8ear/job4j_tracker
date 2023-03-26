@@ -20,6 +20,7 @@ public class StartUITest {
 
     @Test
     public void whenReplaceItem() {
+
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("Replaced item"));
         String replaceName = "New item name";
@@ -39,12 +40,13 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("Delete item"));
         Input in = new StubInput(
-                new String[] {"0", "1"}
+                new String[] {"0", "1", "1"}
         );
         UserAction[] actions = {
                 new DeleteAction(),
                 new ExitAction()
         };
+        new StartUI().init(in, tracker, actions);
         assertThat(tracker.findById(item.getId())).isNull();
     }
 
