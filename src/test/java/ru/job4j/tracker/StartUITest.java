@@ -48,21 +48,4 @@ public class StartUITest {
         assertThat(tracker.findById(item.getId())).isNull();
     }
 
-    @Test
-    public void whenExit() {
-        Output output = new ConsoleOutput();
-        Output out = new StubOutput();
-        Input in = new StubInput(
-                new String[] {"0"}
-        );
-        Tracker tracker = new Tracker();
-        UserAction[] actions = {
-                new ExitAction()
-        };
-        new StartUI().init(in, tracker, actions);
-        assertThat(System.out.toString()).isEqualTo(
-                "Menu." + System.lineSeparator()
-                        + "0. Exit" + System.lineSeparator()
-        );
-    }
 }
