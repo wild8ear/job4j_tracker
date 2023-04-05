@@ -25,6 +25,9 @@ public class PasswordValidator {
         boolean hasDigit = false;
         boolean hasSpecial = false;
         for (char symbol : password.toCharArray()) {
+            if (hasUpCase && hasLowCase && hasDigit && hasSpecial) {
+                return password;
+            }
             if (Character.isUpperCase(symbol)) {
                 hasUpCase = true;
             }
@@ -38,6 +41,7 @@ public class PasswordValidator {
                 hasSpecial = true;
             }
         }
+
         if (!hasUpCase) {
             throw new IllegalArgumentException(
                     "Password should contain at least one uppercase letter"
