@@ -26,7 +26,7 @@ public class PasswordValidator {
         boolean hasSpecial = false;
         for (char symbol : password.toCharArray()) {
             if (hasUpCase && hasLowCase && hasDigit && hasSpecial) {
-                return password;
+                break;
             }
             if (Character.isUpperCase(symbol)) {
                 hasUpCase = true;

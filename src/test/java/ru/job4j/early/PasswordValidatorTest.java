@@ -6,7 +6,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class PasswordValidatorTest {
-
     @Test
     void whenPasswordIsValid() {
         String password = "Ln2$mrTY12";
