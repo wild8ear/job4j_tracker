@@ -17,10 +17,12 @@ public class ReconstructPhrase {
 
     private String getEvenElements() {
         StringBuilder sb = new StringBuilder();
-        LinkedList<Character> list = (LinkedList<Character>) evenElements;
-        for (int i = 0; i < list.size(); i++) {
+        int size = evenElements.size();
+        for (int i = 0; i < size; i++) {
             if (i % 2 == 0) {
-                sb.append(list.get(i));
+                sb.append(evenElements.pollFirst());
+            } else {
+                evenElements.poll();
             }
         }
         return sb.toString();
@@ -28,9 +30,9 @@ public class ReconstructPhrase {
 
     private String getDescendingElements() {
         StringBuilder sb = new StringBuilder();
-        Iterator<Character> discIterator = descendingElements.descendingIterator();
-        while (discIterator.hasNext()) {
-            sb.append(discIterator.next());
+        int size = descendingElements.size();
+        for (int i = 0; i < size; i++) {
+            sb.append(descendingElements.pollLast());
         }
         return sb.toString();
     }
