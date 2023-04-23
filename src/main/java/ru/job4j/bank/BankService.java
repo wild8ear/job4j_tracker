@@ -10,25 +10,15 @@ public class BankService {
     }
 
     public boolean deleteUser(String passport) {
-        for (Map.Entry<User, List<Account>> entry : users.entrySet()) {
-           if (passport.equals(entry.getKey().getPassport())) {
-               return users.remove(entry.getKey(), entry.getValue());
-           }
-        }
-        return false;
+        return users.remove(new User(passport, "")) != null;
     }
 
     public void addAccount(String passport, Account account) {
         User user = this.findByPassport(passport);
         if (user != null) {
-            for (Map.Entry<User, List<Account>> entry : users.entrySet()) {
-                if (user.equals(entry.getKey())) {
-                    List<Account> accounts = entry.getValue();
-                    if (!accounts.contains(account)) {
-                        accounts.add(account);
-                        entry.setValue(accounts);
-                    }
-                }
+            List<Account> accounts = users.get(user);
+            if (!accounts.contains(account)) {
+                accounts.add(account);
             }
         }
     }
@@ -45,13 +35,9 @@ public class BankService {
     public Account findByRequisite(String passport, String requisite) {
         User user = this.findByPassport(passport);
         if (user != null) {
-            for (Map.Entry<User, List<Account>> entry : users.entrySet()) {
-                if (user.equals(entry.getKey())) {
-                    for (Account account : entry.getValue()) {
-                        if (requisite.equals(account.getRequisite())) {
-                            return account;
-                        }
-                    }
+            for (Account account : users.get(user)) {
+                if (requisite.equals(account.getRequisite())) {
+                    return account;
                 }
             }
         }
@@ -66,15 +52,8 @@ public class BankService {
                 || accountSrc.getBalance() < amount) {
            return false;
         }
-        for (Map.Entry<User, List<Account>> entry : users.entrySet()) {
-            for (Account account : entry.getValue()) {
-                if (accountSrc.equals(account)) {
-                    account.setBalance(accountSrc.getBalance() - amount);
-                } else if (accountDest.equals(account)) {
-                    account.setBalance(accountDest.getBalance() + amount);
-                }
-            }
-        }
+        accountSrc.setBalance(accountSrc.getBalance() - amount);
+        accountDest.setBalance(accountDest.getBalance() + amount);
         return true;
     }
 
