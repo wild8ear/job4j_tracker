@@ -5,6 +5,7 @@ import org.assertj.core.api.Assertions.*;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -16,12 +17,12 @@ public class ItemDescByNameTest {
                 new Item("Second"),
                 new Item("Third"),
                 new Item("First"));
-        Collections.sort(items);
+        Collections.sort(items, Collections.reverseOrder());
         List<Item> expected = Arrays.asList(
                 new Item("Second"),
                 new Item("Third"),
                 new Item("First"));
         expected.sort(new ItemDescByName());
-        assertThat(expected.toString()).isNotEqualTo(items.toString());
+        assertThat(expected.toString()).isEqualTo(items.toString());
     }
 }
