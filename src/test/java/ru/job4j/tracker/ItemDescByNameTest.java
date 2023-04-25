@@ -17,12 +17,11 @@ public class ItemDescByNameTest {
                 new Item("Second"),
                 new Item("Third"),
                 new Item("First"));
-        Collections.sort(items, Collections.reverseOrder());
+        items.sort(new ItemDescByName());
         List<Item> expected = Arrays.asList(
-                new Item("Second"),
                 new Item("Third"),
+                new Item("Second"),
                 new Item("First"));
-        expected.sort(new ItemDescByName());
-        assertThat(expected.toString()).isEqualTo(items.toString());
+        assertThat(expected).isEqualTo(items);
     }
 }

@@ -16,12 +16,11 @@ public class ItemAscByNameTest {
                 new Item("Second"),
                 new Item("Third"),
                 new Item("First"));
-        Collections.sort(items);
+        items.sort(new ItemAscByName());
         List<Item> expected = Arrays.asList(
+                new Item("First"),
                 new Item("Second"),
-                new Item("Third"),
-                new Item("First"));
-        expected.sort(new ItemAscByName());
-        assertThat(expected.toString()).isEqualTo(items.toString());
+                new Item("Third"));
+        assertThat(expected).isEqualTo(items);
     }
 }
