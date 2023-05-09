@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class PhoneDictionaryTest {
+
     @Test
     public void whenFindByName() {
         PhoneDictionary phones = new PhoneDictionary();
