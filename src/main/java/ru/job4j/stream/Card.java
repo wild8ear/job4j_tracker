@@ -1,6 +1,5 @@
 package ru.job4j.stream;
 
-import org.testng.ISuite;
 import ru.job4j.stream.Suit;
 import ru.job4j.stream.Value;
 import java.util.stream.Stream;
